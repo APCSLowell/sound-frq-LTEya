@@ -14,9 +14,18 @@ public class Sound
    *  @return the number of values in this sound that this method changed
    */
   public int limitAmplitude(int limit)
-  {  
-    /* to be implemented in part (a) */
-    return 0;
+  {  /* to be implemented in part (a) */
+    int c=0;
+    for (int i=0;i<samples.length;i++){
+      if (samples[i]>limit){
+        samples[i]=limit;
+        c++
+      } else if (samples[i]<limit){
+        samples[i]=limit;
+        c++
+      }
+    }
+    return c;
   }
 
 
@@ -27,7 +36,14 @@ public class Sound
    *  Postcondition: the length of samples reflects the removal of starting silence
    */
   public void trimSilenceFromBeginning()
-  {
-    /* to be implemented in part (b) */
+  {/* to be implemented in part (b) */
+    ArrayList <Integer> a = new ArrayList<Integer>();
+    for(int i : samples)
+        a.add(i);
+    while (a.get(0)==0)
+        a.remove(0);
+    samples= new int[a.size()];
+    for (int i=0;i<a.size();i++)
+        samples[i]=a.get(i);
   }
 }
